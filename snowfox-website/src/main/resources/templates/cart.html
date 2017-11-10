@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layout">
+<head>
+    <title>Cart</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <h1>Cart</h1>
+
+    <div id="cart-item-list">
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Product name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item, stat : ${cart.items}">
+                <td th:text="${stat.count}"></td>
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.quantity}"></td>
+                <td th:text="${item.price.toString()}"></td>
+                <td>
+                    <form th:action="@{/cart/remove}" method="post">
+                        <input type="hidden" name="productId" th:value="${item.id}" />
+                        <input type="submit" class="btn btn-danger" value="Remove"/>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">Sub total:</td>
+                <td th:text="${cart.subTotal.toString()}"></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a th:href="@{/order}" class="btn btn-primary">Order</a>
+    </div>
+
+</section>
+
+</body>
+</html>

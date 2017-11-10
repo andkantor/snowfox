@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layout">
+<head>
+    <title>Order</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <h1>Order</h1>
+
+    <div></div>
+
+    <div id="cart-item-list">
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Product name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item, stat : ${order.items}">
+                <td th:text="${stat.count}"></td>
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.quantity}"></td>
+                <td th:text="${item.price.toString()}"></td>
+            </tr>
+            <tr>
+                <td colspan="3">Sub total:</td>
+                <td th:text="${order.subTotal.toString()}"></td>
+            </tr>
+            <tr>
+                <td colspan="3">Shipping:</td>
+                <td th:text="${order.shipping.toString()}"></td>
+            </tr>
+            <tr>
+                <td colspan="3">Total:</td>
+                <td th:text="${order.total.toString()}"></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <form th:action="@{/order/submit}" method="post">
+            <input type="submit" class="btn btn-primary" value="Submit"/>
+        </form>
+    </div>
+
+</section>
+
+</body>
+</html>

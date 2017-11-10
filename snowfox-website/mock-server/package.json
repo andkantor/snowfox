@@ -1,0 +1,19 @@
+{
+  "name": "snowfox-web-mock-server",
+  "version": "1.0.0",
+  "description": "SnowFox Web Mock Server",
+  "main": "server.js",
+  "author": "andkantor",
+  "private": true,
+  "license": "BSD",
+  "dependencies": {
+    "express": "latest",
+    "socket.io": "latest",
+    "mocha": "latest",
+    "should": "latest",
+    "mockserver": "latest"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

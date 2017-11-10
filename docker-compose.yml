@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  website:
+    build: ./snowfox-website/target
+    ports:
+      - 5000:5000
+    depends_on:
+      - product-service
+    links:
+      - product-service
+    networks:
+      - internal
+
+  product-service:
+    build: ./snowfox-product/target
+    ports:
+      - 5001:5001
+    networks:
+      - internal
+
+#  stock-service:
+#    build: ./snowfox-stock/target
+#    ports:
+#      - 5002:5002
+#    depends_on:
+#      - stock-redis
+#    links:
+#      - stock-redis
+#    networks:
+#      - internal
+#
+#  stock-redis:
+#    image: redis:3.2.11-alpine
+#    networks:
+#      - internal
+#    ports:
+#      - 6379:6379
+
+
+networks:
+  internal:
+    driver: bridge

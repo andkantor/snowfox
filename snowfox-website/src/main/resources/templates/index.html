@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layout">
+<head>
+    <title>Home</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <h1>Products</h1>
+
+    <form th:action="@{/search}" method="get">
+        <div class="row top-20">
+            <div class="col-xs-6">
+                <div class="input-group">
+                    <input type="text" name="criteria" class="form-control">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div id="product-list">
+        <div class="card" style="width: 20rem" th:each="product : ${products}">
+            <img class="card-img-top" src="" th:alt="${product.name}"/>
+            <div>
+                <h4 class="card-title" th:text="${product.name + ' - ' + product.price}"></h4>
+                <p class="card-text" th:text="${product.description}">Lorem ipsum dolor sit amet...</p>
+                <form th:action="@{/cart/add}" method="post">
+                    <input type="hidden" name="productId" th:value="${product.id}" />
+                    <input type="hidden" name="quantity" th:value="1" />
+                    <input type="submit" class="btn btn-primary" value="Add to cart"/>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *,
+Access-Control-Allow-Headers: X-Requested-With
+
+{
+  "_embedded" : {
+    "items" : [ {
+      "id" : 1,
+      "name" : "Apple",
+      "description" : "Lorem ipsum dolor sit amet...",
+      "price" : { "amount" : 20.0, "currency" : "EUR" },
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/v1/products/1"
+        },
+        "product" : {
+          "href" : "http://localhost:8080/v1/products/1"
+        }
+      }
+    }, {
+      "id" : 2,
+      "name" : "Banana",
+      "description" : "Lorem ipsum dolor sit amet...",
+      "price" : { "amount" : 25.0, "currency" : "EUR" },
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/v1/products/2"
+        },
+        "product" : {
+          "href" : "http://localhost:8080/v1/products/2"
+        }
+      }
+    }, {
+      "id" : 3,
+      "name" : "Cherry",
+      "description" : "Lorem ipsum dolor sit amet...",
+      "price" : { "amount" : 10.0, "currency" : "EUR" },
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/v1/products/3"
+        },
+        "product" : {
+          "href" : "http://localhost:8080/v1/products/3"
+        }
+      }
+    }, {
+      "id" : 4,
+      "name" : "Grape",
+      "description" : "Lorem ipsum dolor sit amet...",
+      "price" : { "amount" : 30.0, "currency" : "EUR" },
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/v1/products/4"
+        },
+        "product" : {
+          "href" : "http://localhost:8080/v1/products/4"
+        }
+      }
+    }, {
+      "id" : 5,
+      "name" : "Kiwi",
+      "description" : "Lorem ipsum dolor sit amet...",
+      "price" : { "amount" : 20.0, "currency" : "EUR" },
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/v1/products/5"
+        },
+        "product" : {
+          "href" : "http://localhost:8080/v1/products/5"
+        }
+      }
+    }, {
+      "id" : 6,
+      "name" : "Mango",
+      "description" : "Lorem ipsum dolor sit amet...",
+      "price" : { "amount" : 18.0, "currency" : "EUR" },
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/v1/products/6"
+        },
+        "product" : {
+          "href" : "http://localhost:8080/v1/products/6"
+        }
+      }
+    }, {
+      "id" : 7,
+      "name" : "Orange",
+      "description" : "Lorem ipsum dolor sit amet...",
+      "price" : { "amount" : 22.0, "currency" : "EUR" },
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/v1/products/7"
+        },
+        "product" : {
+          "href" : "http://localhost:8080/v1/products/7"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/v1/products{?page,size,sort}",
+      "templated" : true
+    },
+    "profile" : {
+      "href" : "http://localhost:8080/v1/profile/products"
+    }
+  },
+  "page" : {
+    "size" : 20,
+    "totalElements" : 7,
+    "totalPages" : 1,
+    "number" : 0
+  }
+}
