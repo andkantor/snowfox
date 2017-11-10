@@ -12,3 +12,11 @@ body {
     margin: 5px 2px;
     display: inline-block;
 }
+
+.search-input {
+    margin: 2px;
+}
+
+.search-button {
+    margin: 2px 2px 2px -2px;
+}
