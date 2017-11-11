@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.andkantor.snowfox.stock.model.QuantityChange;
+import com.andkantor.snowfox.stock.model.Operation;
+import com.andkantor.snowfox.stock.model.StockChange;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
@@ -19,8 +20,18 @@ public class DefaultStockRepositoryTest {
 
     @Test
     public void test() {
-        stockRepository.increment(new QuantityChange(1, 2));
-        stockRepository.decrement(new QuantityChange(1, -10));
+        StockChange increment = StockChange.builder()
+                .operation(Operation.INCREMENT)
+                .quantity(12L)
+                .build();
+        StockChange decrement = StockChange.builder()
+                .operation(Operation.DECREMENT)
+                .quantity(10L)
+                .build();
+
+        stockRepository.update(1L, increment);
+        stockRepository.update(1L, decrement);
+
         System.out.println(stockRepository.get(1));
     }
 

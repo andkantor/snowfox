@@ -1,13 +1,11 @@
 package com.andkantor.snowfox.stock.repository;
 
-import com.andkantor.snowfox.stock.model.QuantityChange;
+import com.andkantor.snowfox.stock.model.StockChange;
 
 public interface StockRepository {
 
     long get(long productId);
 
-    void increment(QuantityChange increment);
-
-    boolean decrement(QuantityChange decrement);
+    boolean update(long productId, StockChange stockChange);
 
 }

@@ -5,7 +5,8 @@ import javax.annotation.Resource;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Repository;
 
-import com.andkantor.snowfox.stock.model.QuantityChange;
+import com.andkantor.snowfox.stock.model.Operation;
+import com.andkantor.snowfox.stock.model.StockChange;
 
 @Repository
 public class DefaultStockRepository implements StockRepository {
@@ -15,34 +16,36 @@ public class DefaultStockRepository implements StockRepository {
 
     @Override
     public long get(long productId) {
-        return Long.parseLong(valueOps.get(productId));
+        String quantity = valueOps.get(productId);
+        return quantity == null
+                ? 0L
+                : Long.parseLong(quantity);
     }
 
     @Override
-    public void increment(QuantityChange increment) {
-        if (increment.quantity() <= 0) {
-            throw new IllegalArgumentException("Quantity must be greater than 0");
+    public boolean update(long productId, StockChange stockChange) {
+        if (stockChange.operation().equals(Operation.INCREMENT)) {
+            increment(productId, stockChange);
+            return true;
         }
 
-        valueOps.increment(increment.productId(), increment.quantity());
-    }
-
-    @Override
-    public boolean decrement(QuantityChange decrement) {
-        if (decrement.quantity() >= 0) {
-            throw new IllegalArgumentException("Quantity must be less than 0");
-        }
-
-        Long value = Long.valueOf(valueOps.get(decrement.productId()));
-        if (value + decrement.quantity() >= 0) {
-            Long newValue = valueOps.increment(decrement.productId(), decrement.quantity());
+        if (stockChange.operation().equals(Operation.DECREMENT)) {
+            Long newValue = decrement(productId, stockChange);
             if (newValue >= 0) {
                 return true;
             }
 
-            increment(decrement.negate());
+            increment(productId, stockChange);
         }
 
         return false;
+    }
+
+    private void increment(long productId, StockChange stockChange) {
+        valueOps.increment(productId, stockChange.quantity());
+    }
+
+    private Long decrement(long productId, StockChange stockChange) {
+        return valueOps.increment(productId, -stockChange.quantity());
     }
 }
