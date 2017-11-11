@@ -13,10 +13,11 @@ body {
     display: inline-block;
 }
 
-.search-input {
-    margin: 2px;
+#search-form {
+    padding: 10px 0;
 }
 
-.search-button {
-    margin: 2px 2px 2px -2px;
+#search-container {
+    display: flex;
+    margin-left: 2px;
 }
