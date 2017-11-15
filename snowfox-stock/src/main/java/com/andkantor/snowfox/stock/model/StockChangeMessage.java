@@ -6,15 +6,16 @@ import com.andkantor.snowfox.style.SnowFoxStyle;
 
 @SnowFoxStyle
 @Value.Immutable
-public interface StockChangeResponse {
+public interface StockChangeMessage {
 
-    boolean success();
-    String errorMessage();
+    Long productId();
+    StockChange stockChange();
+    Long currentQuantity();
 
     static Builder builder() {
         return new Builder();
     }
 
-    class Builder extends ImmutableStockChangeResponse.Builder {
+    class Builder extends ImmutableStockChangeMessage.Builder {
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.andkantor.snowfox.stock.exception.NotEnoughQuantitiesException;
 import com.andkantor.snowfox.stock.model.Operation;
 import com.andkantor.snowfox.stock.model.StockChange;
 
@@ -19,7 +20,7 @@ public class DefaultStockRepositoryTest {
     DefaultStockRepository stockRepository;
 
     @Test
-    public void test() {
+    public void test() throws NotEnoughQuantitiesException {
         StockChange increment = StockChange.builder()
                 .operation(Operation.INCREMENT)
                 .quantity(12L)
@@ -35,4 +36,5 @@ public class DefaultStockRepositoryTest {
         System.out.println(stockRepository.get(1));
     }
 
+    // TODO add unit tests
 }
