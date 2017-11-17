@@ -1,49 +1,44 @@
 package com.andkantor.snowfox.web.model.base;
 
+import org.immutables.value.Value;
+
+import com.andkantor.snowfox.style.SnowFoxStyle;
 import com.andkantor.snowfox.web.model.product.Currency;
 
-public class Price {
+@SnowFoxStyle
+@Value.Immutable
+public interface Price {
 
-    private double amount;
-    private Currency currency;
+    double amount();
+    Currency currency();
 
-    public Price() {
+    @Value.Derived
+    default String format() {
+        return amount() + " " + currency();
     }
 
-    public Price(double amount, Currency currency) {
-        this.amount = amount;
-        this.currency = currency;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public Currency getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(Currency currency) {
-        this.currency = currency;
-    }
-
-    public Price add(Price other) {
-        if (!other.currency.equals(currency)) {
+    default Price add(Price other) {
+        if (!other.currency().equals(currency())) {
             throw new IllegalArgumentException("Cannot add prices with different currency");
         }
-        return new Price(amount + other.amount, currency);
+        return price(amount() + other.amount(), currency());
     }
 
-    public Price multiply(double number) {
-        return new Price(amount * number, currency);
+    default Price multiply(double number) {
+        return price(amount() * number, currency());
     }
 
-    @Override
-    public String toString() {
-        return amount + " " + currency;
+    static Price price(double amount, Currency currency) {
+        return builder()
+                .amount(amount)
+                .currency(currency)
+                .build();
+    }
+
+    static Builder builder() {
+        return new Builder();
+    }
+
+    class Builder extends ImmutablePrice.Builder {
     }
 }

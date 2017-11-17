@@ -14,11 +14,11 @@ public class CalculatedCartItem {
     }
 
     public Long getId() {
-        return product.getId();
+        return product.id();
     }
 
     public String getName() {
-        return product.getName();
+        return product.name();
     }
 
     public Long getQuantity() {
@@ -26,6 +26,6 @@ public class CalculatedCartItem {
     }
 
     public Price getPrice() {
-        return product.getPrice().multiply(quantity);
+        return product.price().multiply(quantity);
     }
 }

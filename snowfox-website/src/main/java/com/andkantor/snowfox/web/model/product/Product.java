@@ -1,49 +1,23 @@
 package com.andkantor.snowfox.web.model.product;
 
+import org.immutables.value.Value;
+
+import com.andkantor.snowfox.style.SnowFoxStyle;
 import com.andkantor.snowfox.web.model.base.Price;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Product {
+@SnowFoxStyle
+@Value.Immutable
+public interface Product {
 
-    private Long id;
-    private String name;
-    private String description;
-    private Price price;
+    Long id();
+    String name();
+    String description();
+    Price price();
 
-    public Product() {
+    static Builder builder() {
+        return new Builder();
     }
 
-    public Long getId() {
-        return id;
+    class Builder extends ImmutableProduct.Builder {
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Price getPrice() {
-        return price;
-    }
-
-    public void setPrice(Price price) {
-        this.price = price;
-    }
-
 }
