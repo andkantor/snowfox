@@ -2,18 +2,24 @@ package com.andkantor.snowfox.web.model.base;
 
 import java.util.List;
 
-public class Embedded<T> {
+import org.immutables.value.Value;
 
-    private List<T> items;
+import com.andkantor.snowfox.style.SnowFoxStyle;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-    public Embedded() {
+@SnowFoxStyle
+@Value.Immutable
+@JsonSerialize(as = ImmutableEmbedded.class)
+@JsonDeserialize(as = ImmutableEmbedded.class)
+public interface Embedded<T> {
+
+    List<T> items();
+
+    static <T> Builder<T> builder() {
+        return new Builder<>();
     }
 
-    public List<T> getItems() {
-        return items;
-    }
-
-    public void setItems(List<T> items) {
-        this.items = items;
+    class Builder<T> extends ImmutableEmbedded.Builder<T> {
     }
 }

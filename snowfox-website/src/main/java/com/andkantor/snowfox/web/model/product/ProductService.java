@@ -22,7 +22,7 @@ public class ProductService {
         ProductPageResponse response = restTemplate
                 .getForObject(productServiceUrl + "/v1/products", ProductPageResponse.class);
 
-        return response.getEmbedded().getItems();
+        return response.embedded().items();
     }
 
     public List<Product> getProducts(Collection<Long> productIds) {

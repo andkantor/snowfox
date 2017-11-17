@@ -4,9 +4,13 @@ import org.immutables.value.Value;
 
 import com.andkantor.snowfox.style.SnowFoxStyle;
 import com.andkantor.snowfox.web.model.product.Currency;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @SnowFoxStyle
 @Value.Immutable
+@JsonSerialize(as = ImmutablePrice.class)
+@JsonDeserialize(as = ImmutablePrice.class)
 public interface Price {
 
     double amount();

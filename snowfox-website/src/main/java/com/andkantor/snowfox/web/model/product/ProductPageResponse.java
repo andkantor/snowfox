@@ -1,8 +1,22 @@
 package com.andkantor.snowfox.web.model.product;
 
-import com.andkantor.snowfox.web.model.base.PageResponse;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.immutables.value.Value;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class ProductPageResponse extends PageResponse<Product> {
+import com.andkantor.snowfox.style.SnowFoxStyle;
+import com.andkantor.snowfox.web.model.base.PageResponse;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+@SnowFoxStyle
+@Value.Immutable
+@JsonSerialize(as = ImmutableProductPageResponse.class)
+@JsonDeserialize(as = ImmutableProductPageResponse.class)
+public interface ProductPageResponse extends PageResponse<Product> {
+
+    static Builder builder() {
+        return new Builder();
+    }
+
+    class Builder extends ImmutableProductPageResponse.Builder {
+    }
 }
