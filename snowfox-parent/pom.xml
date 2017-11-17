@@ -21,6 +21,7 @@
         <junit-version>4.12</junit-version>
         <immutables-version>2.5.6</immutables-version>
         <jackson-datatype-jdk8-version>2.6.3</jackson-datatype-jdk8-version>
+        <common-lang3-version>3.0</common-lang3-version>
 
         <!-- plugins -->
         <maven-exec-plugin-version>1.2.1</maven-exec-plugin-version>
@@ -60,6 +61,11 @@
                 <groupId>com.fasterxml.jackson.datatype</groupId>
                 <artifactId>jackson-datatype-jdk8</artifactId>
                 <version>${jackson-datatype-jdk8-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${common-lang3-version}</version>
             </dependency>
 
             <dependency>
