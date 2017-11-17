@@ -5,9 +5,11 @@ import org.immutables.value.Value;
 
 import com.andkantor.snowfox.style.SnowFoxStyle;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @SnowFoxStyle
 @Value.Immutable
+@JsonSerialize(as = ImmutableStockChange.class)
 @JsonDeserialize(as = ImmutableStockChange.class)
 public interface StockChange {
 

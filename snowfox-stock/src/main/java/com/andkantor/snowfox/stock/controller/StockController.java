@@ -14,13 +14,13 @@ import com.andkantor.snowfox.stock.model.StockInfo;
 import com.andkantor.snowfox.stock.service.StockCache;
 
 @RestController
-@RequestMapping("/stock")
+@RequestMapping("/v1/stock")
 public class StockController {
 
     @Autowired
     private StockCache stockCache;
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity<List<StockInfo>> getStockInfo(@RequestBody List<Long> productIds) {
         return new ResponseEntity<>(stockCache.get(productIds), HttpStatus.OK);
     }

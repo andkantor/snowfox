@@ -18,7 +18,7 @@ import com.andkantor.snowfox.stock.repository.StockRepository;
 import com.andkantor.snowfox.stock.service.ChangePublisher;
 
 @RestController
-@RequestMapping("/product/{id}/stock")
+@RequestMapping("/v1/products/{id}/stock")
 public class StockChangeController {
 
     @Autowired
