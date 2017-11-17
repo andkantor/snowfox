@@ -2,36 +2,39 @@ package com.andkantor.snowfox.web.model.order;
 
 import java.util.List;
 
+import org.immutables.value.Value;
+
+import com.andkantor.snowfox.style.SnowFoxStyle;
 import com.andkantor.snowfox.web.model.base.Price;
 import com.andkantor.snowfox.web.model.cart.CalculatedCart;
 import com.andkantor.snowfox.web.model.cart.CalculatedCartItem;
 
-public class Order {
+@SnowFoxStyle
+@Value.Immutable
+public interface Order {
 
-    private CalculatedCart cart;
-    private Price shipping;
+    CalculatedCart cart();
+    Price shipping();
 
-    public Order() {
+    @Value.Derived
+    default List<CalculatedCartItem> items() {
+        return cart().items();
     }
 
-    public Order(CalculatedCart cart, Price shipping) {
-        this.cart = cart;
-        this.shipping = shipping;
+    @Value.Derived
+    default Price subTotal() {
+        return cart().subTotal();
     }
 
-    public List<CalculatedCartItem> getItems() {
-        return cart.getItems();
+    @Value.Derived
+    default Price total() {
+        return cart().subTotal().add(shipping());
     }
 
-    public Price getSubTotal() {
-        return cart.getSubTotal();
+    static Builder builder() {
+        return new Builder();
     }
 
-    public Price getShipping() {
-        return shipping;
-    }
-
-    public Price getTotal() {
-        return cart.getSubTotal().add(shipping);
+    class Builder extends ImmutableOrder.Builder {
     }
 }

@@ -1,4 +1,4 @@
-package com.andkantor.snowfox.web.model.response;
+package com.andkantor.snowfox.web.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

@@ -1,5 +1,7 @@
 package com.andkantor.snowfox.web.controller;
 
+import static com.andkantor.snowfox.web.model.cart.CalculatedCart.calculatedCart;
+
 import javax.validation.Valid;
 import java.util.List;
 
@@ -10,10 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.andkantor.snowfox.web.model.base.Product;
-import com.andkantor.snowfox.web.model.cart.CalculatedCart;
-import com.andkantor.snowfox.web.model.cart.Cart;
 import com.andkantor.snowfox.web.request.CartAddRequest;
 import com.andkantor.snowfox.web.request.CartRemoveRequest;
+import com.andkantor.snowfox.web.service.Cart;
 import com.andkantor.snowfox.web.service.ProductService;
 
 @Controller
@@ -30,7 +31,7 @@ public class CartController {
     public String indexAction(Model model) {
         List<Product> products = productService.getProducts(cart.getProductIds());
 
-        model.addAttribute("cart", new CalculatedCart(cart, products));
+        model.addAttribute("cart", calculatedCart(cart, products));
 
         return "cart";
     }

@@ -1,4 +1,4 @@
-package com.andkantor.snowfox.web.model.cart;
+package com.andkantor.snowfox.web.service;
 
 import java.util.Collection;
 import java.util.HashMap;

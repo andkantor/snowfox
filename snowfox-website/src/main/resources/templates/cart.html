@@ -25,21 +25,21 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="item, stat : ${cart.items}">
+            <tr th:each="item, stat : ${cart.items()}">
                 <td th:text="${stat.count}"></td>
-                <td th:text="${item.name}"></td>
-                <td th:text="${item.quantity}"></td>
-                <td th:text="${item.price.format()}"></td>
+                <td th:text="${item.name()}"></td>
+                <td th:text="${item.quantity()}"></td>
+                <td th:text="${item.price().format()}"></td>
                 <td>
                     <form th:action="@{/cart/remove}" method="post">
-                        <input type="hidden" name="productId" th:value="${item.id}" />
+                        <input type="hidden" name="productId" th:value="${item.id()}" />
                         <input type="submit" class="btn btn-danger" value="Remove"/>
                     </form>
                 </td>
             </tr>
             <tr>
                 <td colspan="3">Sub total:</td>
-                <td th:text="${cart.subTotal.format()}"></td>
+                <td th:text="${cart.subTotal().format()}"></td>
                 <td></td>
             </tr>
             </tbody>

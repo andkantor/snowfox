@@ -1,8 +1,9 @@
-package com.andkantor.snowfox.web.model.order;
+package com.andkantor.snowfox.web.service;
 
 import org.springframework.stereotype.Component;
 
-import com.andkantor.snowfox.web.model.response.OrderSubmissionResponse;
+import com.andkantor.snowfox.web.model.order.Order;
+import com.andkantor.snowfox.web.response.OrderSubmissionResponse;
 
 @Component
 public class OrderService {

@@ -26,23 +26,23 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="item, stat : ${order.items}">
+            <tr th:each="item, stat : ${order.items()}">
                 <td th:text="${stat.count}"></td>
-                <td th:text="${item.name}"></td>
-                <td th:text="${item.quantity}"></td>
-                <td th:text="${item.price.format()}"></td>
+                <td th:text="${item.name()}"></td>
+                <td th:text="${item.quantity()}"></td>
+                <td th:text="${item.price().format()}"></td>
             </tr>
             <tr>
                 <td colspan="3">Sub total:</td>
-                <td th:text="${order.subTotal.format()}"></td>
+                <td th:text="${order.subTotal().format()}"></td>
             </tr>
             <tr>
                 <td colspan="3">Shipping:</td>
-                <td th:text="${order.shipping.format()}"></td>
+                <td th:text="${order.shipping().format()}"></td>
             </tr>
             <tr>
                 <td colspan="3">Total:</td>
-                <td th:text="${order.total.format()}"></td>
+                <td th:text="${order.total().format()}"></td>
                 <td></td>
             </tr>
             </tbody>

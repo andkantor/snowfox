@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.andkantor.snowfox.web.model.base.Product;
-import com.andkantor.snowfox.web.model.response.ProductPageResponse;
+import com.andkantor.snowfox.web.response.ProductPageResponse;
 
 @Component
 public class ProductService {
