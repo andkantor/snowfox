@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.andkantor.snowfox.web.model.product.ProductService;
+import com.andkantor.snowfox.web.service.ProductService;
 
 @Controller
 public class HomeController {

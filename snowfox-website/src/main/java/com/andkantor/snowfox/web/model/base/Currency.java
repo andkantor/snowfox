@@ -1,4 +1,4 @@
-package com.andkantor.snowfox.web.model.product;
+package com.andkantor.snowfox.web.model.base;
 
 public enum Currency {
 

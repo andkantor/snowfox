@@ -2,6 +2,8 @@ package com.andkantor.snowfox.web.model.order;
 
 import org.springframework.stereotype.Component;
 
+import com.andkantor.snowfox.web.model.response.OrderSubmissionResponse;
+
 @Component
 public class OrderService {
 

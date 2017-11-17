@@ -1,4 +1,4 @@
-package com.andkantor.snowfox.web.model.cart;
+package com.andkantor.snowfox.web.request;
 
 import javax.validation.constraints.NotNull;
 

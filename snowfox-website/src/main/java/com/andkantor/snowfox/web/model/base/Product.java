@@ -1,9 +1,8 @@
-package com.andkantor.snowfox.web.model.product;
+package com.andkantor.snowfox.web.model.base;
 
 import org.immutables.value.Value;
 
 import com.andkantor.snowfox.style.SnowFoxStyle;
-import com.andkantor.snowfox.web.model.base.Price;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 

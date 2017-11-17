@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.andkantor.snowfox.web.model.base.Currency;
 import com.andkantor.snowfox.web.model.base.Price;
-import com.andkantor.snowfox.web.model.product.Currency;
-import com.andkantor.snowfox.web.model.product.Product;
+import com.andkantor.snowfox.web.model.base.Product;
 
 public class CalculatedCart {
 

@@ -1,4 +1,4 @@
-package com.andkantor.snowfox.web.model.product;
+package com.andkantor.snowfox.web.service;
 
 import java.util.Collection;
 import java.util.List;
@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
+import com.andkantor.snowfox.web.model.base.Product;
+import com.andkantor.snowfox.web.model.response.ProductPageResponse;
 
 @Component
 public class ProductService {

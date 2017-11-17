@@ -1,7 +1,7 @@
 package com.andkantor.snowfox.web.model.cart;
 
 import com.andkantor.snowfox.web.model.base.Price;
-import com.andkantor.snowfox.web.model.product.Product;
+import com.andkantor.snowfox.web.model.base.Product;
 
 public class CalculatedCartItem {
 

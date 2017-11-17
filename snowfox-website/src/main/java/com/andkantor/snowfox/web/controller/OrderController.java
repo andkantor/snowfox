@@ -10,14 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.andkantor.snowfox.web.model.base.Currency;
+import com.andkantor.snowfox.web.model.base.Product;
 import com.andkantor.snowfox.web.model.cart.CalculatedCart;
 import com.andkantor.snowfox.web.model.cart.Cart;
 import com.andkantor.snowfox.web.model.order.Order;
 import com.andkantor.snowfox.web.model.order.OrderService;
-import com.andkantor.snowfox.web.model.order.OrderSubmissionResponse;
-import com.andkantor.snowfox.web.model.product.Currency;
-import com.andkantor.snowfox.web.model.product.Product;
-import com.andkantor.snowfox.web.model.product.ProductService;
+import com.andkantor.snowfox.web.model.response.OrderSubmissionResponse;
+import com.andkantor.snowfox.web.service.ProductService;
 
 @Controller
 @RequestMapping("/order")
