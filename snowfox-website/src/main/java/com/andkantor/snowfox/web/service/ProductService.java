@@ -21,7 +21,6 @@ public class ProductService {
     private RestTemplate restTemplate;
 
     public List<Product> getProducts() {
-        // TODO extract url to configuration
         ProductPageResponse response = restTemplate
                 .getForObject(productServiceUrl + "/v1/products", ProductPageResponse.class);
 
