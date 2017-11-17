@@ -33,7 +33,7 @@ public class StockService {
         HttpEntity<List> request = new HttpEntity<>(productIds);
 
         ResponseEntity<StockInfoList> response = restTemplate
-                .exchange(stockServiceUrl + "/v1/stock", HttpMethod.GET, request, StockInfoList.class);
+                .exchange(stockServiceUrl + "/v1/stock", HttpMethod.POST, request, StockInfoList.class);
 
         return warehouse(response.getBody());
     }
