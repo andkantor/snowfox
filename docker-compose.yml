@@ -5,39 +5,52 @@ services:
     build: ./snowfox-website/target
     ports:
       - 5000:5000
-    depends_on:
-      - product-service
     links:
       - product-service
-    networks:
-      - internal
 
   product-service:
     build: ./snowfox-product/target
     ports:
       - 5001:5001
-    networks:
-      - internal
 
-#  stock-service:
-#    build: ./snowfox-stock/target
-#    ports:
-#      - 5002:5002
-#    depends_on:
-#      - stock-redis
-#    links:
-#      - stock-redis
-#    networks:
-#      - internal
-#
-#  stock-redis:
-#    image: redis:3.2.11-alpine
-#    networks:
-#      - internal
-#    ports:
-#      - 6379:6379
+  stock-service:
+    build: ./snowfox-stock/target
+    ports:
+      - 5002:5002
+    depends_on:
+      - stock-redis
+    links:
+      - stock-redis
 
+  stock-redis:
+    image: redis:3.2.11-alpine
+    ports:
+      - 6379:6379
 
-networks:
-  internal:
-    driver: bridge
+  zookeeper:
+    image: zookeeper:3.4
+    restart: always
+    ports:
+      - 2181:2181
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=zookeeper:2888:3888
+#      ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=zoo3:2888:3888
+
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 192.168.1.116 # localhost is not working in case of multiple brokers
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_CREATE_TOPICS: stock:1:1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  portainer:
+    image: portainer/portainer
+    ports:
+      - 9000:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
