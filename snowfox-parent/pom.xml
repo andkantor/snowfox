@@ -135,7 +135,7 @@
                     <rulesets>
                         <ruleset>pmd-ruleset.xml</ruleset>
                     </rulesets>
-                    <failOnViolation>true</failOnViolation>
+                    <failOnViolation>false</failOnViolation>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -162,7 +162,7 @@
                     <configLocation>checkstyle.xml</configLocation>
                     <encoding>UTF-8</encoding>
                     <consoleOutput>true</consoleOutput>
-                    <failsOnError>true</failsOnError>
+                    <failsOnError>false</failsOnError>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -187,7 +187,7 @@
                 </executions>
                 <configuration>
                     <effort>Max</effort>
-                    <failOnError>true</failOnError>
+                    <failOnError>false</failOnError>
                     <threshold>Low</threshold>
                     <xmlOutput>true</xmlOutput>
                     <findbugsXmlOutputDirectory>${project.build.directory}</findbugsXmlOutputDirectory>
