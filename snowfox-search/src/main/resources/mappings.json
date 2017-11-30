@@ -1,0 +1,25 @@
+{
+  "product": {
+    "properties": {
+      "id": {
+        "type": "long"
+      },
+      "name": {
+        "type": "text"
+      },
+      "description": {
+        "type": "text"
+      },
+      "price": {
+        "properties": {
+          "amount": {
+            "type": "double"
+          },
+          "currency": {
+            "type": "text"
+          }
+        }
+      }
+    }
+  }
+}
